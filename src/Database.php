@@ -2,9 +2,15 @@
 
 class Database
 {
-    private static PDO|null $instance = null;
+    /**
+     * @var PDO|null
+     */
+    private static  $instance = null;
 
-    public static function getConnection(): PDO|bool
+    /**
+     * @return PDO
+     */
+    public static function getConnection()
     {
         if (!self::$instance) {
             $db = parse_ini_file(__DIR__ . '/../config/config.ini', true)['database'];

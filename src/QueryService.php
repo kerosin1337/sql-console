@@ -4,7 +4,10 @@ require_once 'Database.php';
 
 class QueryService
 {
-    private PDO $pdo;
+    /**
+     * @var bool|PDO
+     */
+    private $pdo;
 
     public function __construct()
     {
@@ -36,7 +39,7 @@ class QueryService
      * @param string $id
      * @return mixed
      */
-    public function getById(string $id): mixed
+    public function getById(string $id)
     {
         $stmt = $this->pdo->prepare("SELECT * FROM queries WHERE id = ?");
         $stmt->execute([$id]);
